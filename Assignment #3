@@ -1,0 +1,106 @@
+/*
+Assignment 3
+
+Programmed by: Jonathan Clement
+
+Class: CSCI 1301
+
+Instructor: Prof. Ade Thompson
+
+Due Date: March 19, 2021
+*/
+
+import java.util.Scanner;
+
+public class ClementJAssignment3
+{
+   public static void main(String[] args)
+   {
+      Scanner input = new Scanner(System.in);
+      
+      String[] days = {"Monday","Tuesday","Wednesday","Thursday","Friday"};
+      String[] meals = new String[5];
+      double[] prices = new double[5];
+      int userInput;
+      String answer;
+      double highest = prices[0];
+      String highest2 = meals[0];
+      int[] dishNumber = {1,2,3,4,5}; 
+       
+      for(int num = 0; num < meals.length; num++)
+      {
+         System.out.println("Enter what is being served on " + days[num]);
+         meals[num] = input.nextLine();
+         System.out.println("You have entered Dish: " + meals[num]);
+      }
+   
+      for(int num = 0; num < prices.length; num++)
+      {
+         System.out.println("What is the price of " + meals[num] + "?");
+         prices[num] = input.nextDouble();
+         System.out.println("You have entered amount $" + prices[num] + " for " + meals[num]);
+      }
+      
+      System.out.println(" Dish#       Dish        Price       Day Served");
+      System.out.println("--------------------------------------------------");  
+      
+      for(int index = 0; index < meals.length; index++)
+      {
+         System.out.printf(dishNumber[index] + "\t\t\t\t\t" +            
+            meals[index] + "\t\t\t" +
+            prices[index] + "\t\t\t" +
+            days[index] + "\n");
+      }      
+      
+      do
+      {
+      
+         System.out.println("Please search for a dish by entering a number from 1 to 5");
+         userInput = input.nextInt();
+      
+         while(userInput < 1 || userInput > 5)
+         {
+            System.out.println("ERROR! Please enter a number from 1 to 5");
+            userInput = input.nextInt();
+         }
+      
+         switch(userInput)
+         {
+            case 1:
+               System.out.println(meals[0] + " is served on " + days[0]);
+               break;
+            
+            case 2:
+               System.out.println(meals[1] + " is served on " + days[1]);
+               break;
+            
+            case 3:
+               System.out.println(meals[2] + " is served on " + days[2]);
+               break;
+            
+            case 4:
+               System.out.println(meals[3] + " is served on " + days[3]);
+               break;
+            
+            case 5:
+               System.out.println(meals[4] + " is served on " + days[4]);
+               break; 
+         }
+      
+         System.out.println("Would you like to search for another dish? Y/N or Yes/No");
+         answer = input.next();
+      
+      }while(answer.equalsIgnoreCase("Yes") || answer.equalsIgnoreCase("Y")); 
+         
+      for(int i = 0; i < prices.length; i++)
+      {
+         if(prices[i] > highest)
+         {
+            highest = prices[i];
+            highest2 = meals[i];
+         }
+      }
+      
+      System.out.println("The most expensive meal is " + highest2 + " and it costs $" + highest);  
+   }
+}
