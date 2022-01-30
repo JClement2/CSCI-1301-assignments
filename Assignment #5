@@ -1,0 +1,272 @@
+/*
+Student: Jonathan Clement
+Instructor: Prof. Ade Thompson
+Class: CSCI 1301 Section 1
+Due Date: April 23rd, 2021
+*/
+
+import java.util.Scanner;
+
+public class HamburgerStore
+{
+   public static void main(String[] args)
+   {
+   
+      String answer;
+      int customer;
+      double price = 4.99;
+      final double totalPrice;
+   
+      Hamburger custom = new Hamburger();
+      Hamburger plain = new Hamburger();
+      Scanner input = new Scanner(System.in);
+   
+   
+      System.out.println("Hello and welcome to Hamburger Mike's! \nHow many orders do you have for us today?");
+      customer = input.nextInt();
+      
+      for(int count = 1; count <= customer; count ++)
+      {
+         System.out.println("Go with Order #" + count);
+         System.out.println("Is order #" + count + " a Custom order or a Plain order? (Please answer 'Custom' or Plain')");
+         answer = input.next();
+         
+         if(answer.equalsIgnoreCase("Plain"))
+         {
+            System.out.println("Here are the details for Order #" + count + ": ");
+            plain.orderDetailsPlain();
+         }
+         else if(answer.equalsIgnoreCase("Custom"))
+         {
+            System.out.println("What bun would you like? White or Wheat?");
+            answer = input.next();
+            
+            if(answer.equalsIgnoreCase("White"))
+            {
+               custom.setBun(answer);
+            }
+            else if(answer.equalsIgnoreCase("Wheat"))
+            {
+               custom.setBun(answer);
+            }
+            
+            System.out.println("Would you like Cheese?");
+            answer = input.next();
+         
+            if(answer.equalsIgnoreCase("Yes"))
+            {
+               custom.setCheese(true);
+               price = price + 0.75;
+               custom.setPrice(price);
+               System.out.println("Cheese: Yes");
+            }
+            else
+            {
+               custom.setCheese(false);
+               System.out.println("Cheese: No");
+            }
+            
+            System.out.println("Would you like to supersize your order?");
+            answer = input.next();
+            
+            if(answer.equalsIgnoreCase("Yes"))
+            {
+               custom.setSuperSize(true);
+               price = price + 1.75;
+               custom.setPrice(price);
+               System.out.println("SuperSize: Yes");
+            }
+            else if(answer.equalsIgnoreCase("No"))
+            {
+               custom.setSuperSize(false);
+               System.out.println("Supersize: No");
+            }   
+            
+            System.out.println("Would you like to add toppings to your burger? (Yes/No)");
+            answer = input.next();
+            
+            if(answer.equalsIgnoreCase("Yes"))
+            {
+               String y = answer;
+               
+               custom.addToppings();
+            }
+          
+            System.out.println("Here are the details for Order #" + count + ": ");
+            
+            custom.orderDetails();
+         }
+                  
+      }
+      System.out.println("Thank you for your order(s)! Please wait while we make your food. We thank you for your continued patronage!");
+   }
+}
+
+
+
+*********************************************************************THE CODE FOR THE ACCOMPANIYING CLASS IS LISTED BELOW**************************************************************************************************
+
+
+import java.util.Scanner;
+import java.util.*;
+
+public class Hamburger
+{
+   //Attributes
+   private String bun;
+   private int beefPatties;
+   private boolean cheese;
+   private boolean supersize;
+   private double price;
+   private ArrayList toppings = new ArrayList();           
+   //Constructors
+   public Hamburger()
+   {
+      bun = "White";
+      beefPatties = 1;
+      cheese = false;
+      price = 4.99;
+   }
+
+   
+   
+   //Getters
+   public boolean getCheese()
+   {
+      return cheese;
+   }
+   
+   public boolean getSuperSize()
+   {
+      return supersize;
+   }
+   
+   public String getBun()
+   {
+      return bun;
+   }
+   
+   public double getPrice()
+   {
+      return price;
+   }
+   
+   //Setters
+   public void setCheese(boolean c)
+   {
+      this.cheese = c;
+   }
+   
+   public void setSuperSize(boolean ss)
+   {
+      this.supersize = ss;
+   }
+   
+   public void setBun(String b)
+   {
+      this.bun = b;
+   }
+   
+   public void setPrice(double p)
+   {
+      this.price = p;
+   }
+   
+   //Behavior Methods
+   public boolean addCheese(boolean c)
+   {
+      return cheese;
+   }
+   
+   public ArrayList addToppings()
+   {
+      String answer2;
+      
+      System.out.println("Please select which toppings you would like on your Burger.");
+      Scanner input2 = new Scanner(System.in);
+      
+      System.out.println("Would you like lettuce? (Yes/No)");
+      answer2 = input2.next();
+      
+      if(answer2.equalsIgnoreCase("Yes"))
+      {
+         toppings.add("Lettuce");
+      }
+      
+      System.out.println("Would you like tomato? (Yes/No)");
+      answer2 = input2.next();
+      
+      if(answer2.equalsIgnoreCase("Yes"))
+      {
+         toppings.add("Tomato");
+      }
+      
+      System.out.println("Would you like ketchup? (Yes/No)");
+      answer2 = input2.next();
+      
+      if(answer2.equalsIgnoreCase("Yes"))
+      {
+         toppings.add("Ketchup");
+      }
+      
+      System.out.println("Would you like mustard? (Yes/No)");
+      answer2 = input2.next();
+      
+      if(answer2.equalsIgnoreCase("Yes"))
+      {
+         toppings.add("Mustard");
+      }
+      
+      System.out.println("Would you like pickles? (Yes/No)");
+      answer2 = input2.next();
+      
+      if(answer2.equalsIgnoreCase("Yes"))
+      {
+         toppings.add("Pickles");
+      }
+      
+      return toppings;
+   }
+  
+   public void orderDetails()
+   {
+      System.out.println("---------------------------------");
+      System.out.println("Bun: " + getBun());
+      
+      if(cheese == true)
+      {
+         System.out.println("Cheese: Yes");
+      }
+      else if(cheese == false)
+      {
+         System.out.println("Cheese: No");
+      }
+      
+      if(supersize == true)
+      {
+         System.out.println("Number of Patties: 2");
+      }
+      else if(supersize == false)
+      {
+         System.out.println("Number of Patties: 1");
+      }
+      System.out.println("You have selected the following toppings: " + toppings);
+      System.out.println("Total: $" + getPrice());
+      System.out.println("---------------------------------");  
+      System.out.println(" ");   
+   }
+   
+   public void orderDetailsPlain()
+   {
+      System.out.println("---------------------------------");
+      System.out.println("Bun: " + getBun());
+      if(supersize == false)
+      {
+         System.out.println("Number of Patties: 1");
+      }
+      System.out.println("Cheese: " + getCheese());
+      System.out.println("Price: " + getPrice());
+      System.out.println("---------------------------------");
+      System.out.println(" ");
+   }
+}
