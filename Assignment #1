@@ -1,0 +1,122 @@
+/*
+Student: Jonathan Clement
+Date Issued: Feb 5th 2021
+Date due: Feb 6th 2021
+CSCI 1301-Prof. Ade Thompson
+
+Algorithm
+Step 1: Import scanner
+
+Step 2: set class and main lines
+
+Step 3: Declare our values. in this case using doubles so we can have our grad broken down into a decimal
+
+Step 4: Create a new scanner object (in this case named "scan1")
+
+Step 5: Now we create multiple propts to the user to input values for assignments/quizzes/tests.
+
+Step 6: Once we have all of our inputs from the user, we then set up 3 more doubles.
+Each one will add the respective categories together then divide them by the amount of 
+assignments/quizzes/tests given.
+
+Step 7: At this point, we take the totals of assignments/quizzes/tests and then multiply them 
+by their weights, that being 30%/20%/50% respectively.
+
+Step 8: Now that our grades are properly weighted out, we take the 3 numbers from our "weighing"
+and add them together to get the Overall Grade Average.
+
+
+*/
+
+//Import Scanner
+import java.util.Scanner;
+
+public class Assignment1 //start class
+{
+   public static void main(String[] args) //start main
+   {
+      //Declare Values
+      int assignment1;
+      int assignment2;
+      int assignment3;
+      int assignment4;
+      int assignment5;
+      int quiz1;
+      int quiz2;
+      int quiz3;
+      int quiz4;
+      int test1;
+      int test2;
+      int test3;
+      int test4;
+      //Set scanner object
+      Scanner scan1 = new Scanner(System.in);
+      //Prompt user for Grades
+      System.out.println("Enter your Grade for Assignment 1");
+      assignment1 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Assignment 2");
+      assignment2 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Assignment 3");
+      assignment3 = scan1.nextInt();
+   
+      System.out.println("Enter your Grade for Assignment 4");
+      assignment4 = scan1.nextInt();
+   
+      System.out.println("Enter your Grade for Assignment 5");
+      assignment5 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Quiz 1");
+      quiz1 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Quiz 2");
+      quiz2 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Quiz 3");
+      quiz3 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Quiz 4");
+      quiz4 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Test 1");
+      test1 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Test 2");
+      test2 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Test 3");
+      test3 = scan1.nextInt();
+      
+      System.out.println("Enter your Grade for Test 4");
+      test4 = scan1.nextInt(); 
+   //assign a double to calculate the average of the 5 assignment grades
+      double assignmentTotals = (assignment1 + assignment2 + assignment3 + assignment4 + assignment5) / 5;
+      System.out.println("Your total assignment grade = " + assignmentTotals);
+   //assign a double to calculate the average of the 4 quiz grades
+      double quizTotals = (quiz1 + quiz2 + quiz3 + quiz4) / 4;
+      System.out.println("Your total quiz grade = " + quizTotals);
+   //assign a double to calculate the average of the 4 test grades
+      double testTotals = (test1 + test2 + test3 + test4) / 4;
+      System.out.println("Your total test grade = " + testTotals);
+   //with  our grades now averaged, i used the lines below to multiply each grade average by their respective weights
+      double assignmentWeight = (assignmentTotals * 0.30);
+      double quizWeight = (quizTotals * 0.20);
+      double testWeight = (testTotals * 0.50);
+   //finally, now that i have the final number from the weight calculations, i added all three numbers together to get the final overal grade average
+      double gradeTotal = (assignmentWeight + quizWeight + testWeight);
+      System.out.println("Your Total Grade for CSCI 1301 = " + gradeTotal);
+   
+   // something you may have noticed at the point, assuming you put in the values from the example,
+   // you probably got a different output. The output that was recieved here should be 89.30,
+   // while the output in the example is 89.70. To be frank, im not sure how you got this number.
+   // i ran this multiple times checking the lines of code each time, but i cant tell that anything is different.
+   // The only thing i can guess is that perhaps when this screenshot was taken the grade weights may have been different
+   // at that time. Or, it's possible the combonations of doubles/integers were used and i simply cannot figure it out.
+   // At this point, this iteration of code is the closest i have gotten to the answer in the example so we are going with that.
+    
+   
+   }//end main
+}//end class
+
+
