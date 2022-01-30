@@ -1,0 +1,157 @@
+/*
+Written By: Jonathan Clement
+Due Date: 2/26/2021
+Instructor: Ade Thompson
+Class CSCI 1301-01
+
+
+
+Algorithm For Assignment #2
+
+Step 1: Import Scanner
+Step 2: Create Class and Main Method
+Step 3: Type out a short introductory message stating what game we are playing and notifying the players of the different inputs availabe.
+Step 4: Set up a String for input validation at the end of the program cycle.
+Step 5: Speaking of cycles, set up the do-while cycle so that all further code may be captured in a loop to be executed at least once.
+        (Note: All code from here on out, with the exception of the GAME OVER message will take place inside of the do-while.) 
+Step 6: Set a prompt for player 1 to input a number from 1 to 5, and then set a scanner to capture input. Also set up a while loop so that should Player 1 
+        enter a number other than those requested the program will display an error message and reprompt the user.
+Step 7: Repeat Step 6 but change player 1 inputs for player 2.
+Step 8: Ok now comes the fun part, with our P! and P2 prompts set, we now set a multitude of if-else-if statements to account for every combination of numbers,
+        As well as make both Player 1 and Player 2 variants.
+Step 9: With our if-else-if statements done, all thats left now is input validation. For this, i set up another scanner to caprute that input and set the program
+        to output a short Yes/No quastion regarding repeat plays. We can also use that String from earlier rrepeat the entire program should the correct answer
+        (in this case "Yes" or "Y") be entered in. Otherwise it will end the session and move on to the final message.
+Step 10: Set a final message declaring "GAME OVER" should the user decide to stop playing the game.                           
+
+
+*/
+
+import java.util.Scanner;
+
+public class ClementJAssignment2
+{
+   public static void main(String[] args)
+   {
+      
+      System.out.println("Time to play a game! This game is called Moropinzee. Its similiar to Rock-Paper-Scissors, however with 5 variables instead of 3.\n" + 
+                         "1 = Gorilla, 2 = Cyborg, 3 = Gangster, 4 = Soldier, 5 = Zombie.\n");
+      String answer;
+      
+      do{
+         Scanner p1 = new Scanner(System.in);
+         System.out.println("Player 1, please enter a number from 1-5");
+         int Player1 = p1.nextInt();
+      
+         while(Player1 < 1 || Player1 > 5)
+         {
+            System.out.println("ERROR! Player 1, please input a number from 1 to 5");
+            Player1 = p1.nextInt();
+         }         
+      
+         Scanner p2 = new Scanner(System.in);
+         System.out.println("Player 2, please enter a number from 1-5");
+         int Player2 = p2.nextInt();
+      
+         while(Player2 <1 || Player2 > 5)
+         {
+            System.out.println("ERROR! Player 2, please input a number from 1 to 5");
+            Player2 = p2.nextInt();
+         }
+      
+         if(Player1 == Player2)
+         {
+            System.out.println("Tie Game! No one wins!");
+         }
+         else if(Player1 == 1 && Player2 == 4)
+         {
+            System.out.println("Gorilla fools Soldier! Player 1 wins!");
+         }
+         else if(Player1 == 1 && Player2 == 2)
+         {
+            System.out.println("Gorilla unplugs Cyborg! Player 1 wins!");
+         }
+         else if(Player1 == 2 && Player2 == 4)
+         {
+            System.out.println("Cyborg chokes Soldier! Player 1 wins!");
+         }
+         else if(Player1 == 2 && Player2 == 5)
+         {
+            System.out.println("Cyborg crushes Zombie! Player 1 wins!");
+         }
+         else if(Player1 == 3 && Player2 == 2)
+         {
+            System.out.println("Gangster drowns Cyborg! Player 1 wins!");
+         }
+         else if(Player1 == 3 && Player2 == 1)
+         {
+            System.out.println("Gangster skewers Gorilla! Player 1 wins!");
+         }
+         else if(Player1 == 4 && Player2 == 3)
+         {
+            System.out.println("Soldier chops Gangster! Player 1 wins!");
+         }
+         else if(Player1 == 4 && Player2 == 5)
+         {
+            System.out.println("Soldier decapitates Zombie! Player 1 wins!");
+         }
+         else if(Player1 == 5 && Player2 == 3)
+         {
+            System.out.println("Zombie eats Gangster! Player 1 wins!");
+         }
+         else if(Player1 == 5 && Player2 == 1)
+         {
+            System.out.println("Zombie savages Gorilla! Player 1 wins!");
+         }
+         
+         else if(Player2 == 1 && Player1 == 4)
+         {
+            System.out.println("Gorilla fools Soldier! Player 2 wins!");
+         }
+         else if(Player2 == 1 && Player1 == 2)
+         {
+            System.out.println("Gorilla unplugs Cyborg! Player 2 wins!");
+         }
+         else if(Player2 == 2 && Player1 == 4)
+         {
+            System.out.println("Cyborg chokes Soldier! Player 2 wins!");
+         }
+         else if(Player2 == 2 && Player1 == 5)
+         {
+            System.out.println("Cyborg crushes Zombie! Player 2 wins!");
+         }
+         else if(Player2 == 3 && Player1 == 2)
+         {
+            System.out.println("Gangster drowns Cyborg! Player 2 wins!");
+         }
+         else if(Player2 == 3 && Player1 == 1)
+         {
+            System.out.println("Gangster skewers Gorilla! Player 2 wins!");
+         }
+         else if(Player2 == 4 && Player1 == 3)
+         {
+            System.out.println("Soldier chops Gangster! Player 2 wins!");
+         }
+         else if(Player2 == 4 && Player1 == 5)
+         {
+            System.out.println("Soldier decapitates Zombie! Player 2 wins!");
+         }
+         else if(Player2 == 5 && Player1 == 3)
+         {
+            System.out.println("Zombie eats Gangster! Player 2 wins!");
+         }
+         else if(Player2 == 5 && Player1 == 1)
+         {
+            System.out.println("Zombie savages Gorilla! Player 2 wins!");
+         }
+         
+         Scanner scan3 = new Scanner(System.in);
+         System.out.println("\nWould you like to play again? Yes/No");
+         answer = scan3.next();
+         
+      }while(answer.equalsIgnoreCase("Yes") || answer.equalsIgnoreCase("Y"));
+      
+      System.out.println("GAME OVER. THANKS FOR PLAYING!");
+   }         
+      
+}
