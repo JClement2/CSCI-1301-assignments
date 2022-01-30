@@ -1,0 +1,104 @@
+//Created By: Jonathan CLement
+//Class: CSCI 1301
+//Instructor: Prof. Ade Thompson
+//Due on: April 4th, 2021
+
+import java.util.Scanner;
+
+public class ClementJAssignment4
+{
+   public static void main(String[] args)
+   {
+      String make;
+      String answer;
+      double totalNoTax;
+      double totalFinal;
+      
+      Scanner input = new Scanner (System.in);
+      
+      System.out.println("Welcome to The Greasy Monkey! To start, please enter the make of your car");
+      make = input.next();
+      System.out.println("You have entered " + make);
+      System.out.println("Is your car an Import Model? (Yes/No)");
+      answer = input.next();
+      
+      totalNoTax = carMaintanence(make);
+      
+      System.out.println("Your Total Before Taxes = $" + totalNoTax);
+      if(answer.equalsIgnoreCase("Yes"))
+      {
+         calcFinalPrice1(totalNoTax);
+         totalFinal = calcFinalPrice1(totalNoTax);
+      }
+      else
+      {
+         calcFinalPrice2(totalNoTax);
+         totalFinal = calcFinalPrice2(totalNoTax);
+      }
+      System.out.printf("Your Total After Taxes = $%.2f", totalFinal);
+      System.out.println("\nThank your for your business! Please wait as our techs work on your vehicle.");
+   }
+   
+   public static double carMaintanence(String make)
+   {  
+      System.out.println("What services would you like us to perform on your " + make +"?");
+      String[] services = {"Emissions System Repair","Tune Up","Timing Belt Replacement","Transmission Service"};
+      double[] prices = {269.99,159.99,685.99,129.99};
+      double sum = 0.0;
+      String answer2;
+      Scanner input2 = new Scanner (System.in);
+      
+      System.out.println("Service                        Price");
+      System.out.println("--------------------------------------");
+      
+      for(int a = 0; a < prices.length; a++)
+      {
+         System.out.print("\n" + services[a] + "\t\t\t\t" + prices[a]);
+      }
+     
+      System.out.println("\n--------------------------------------");
+      System.out.println("Please select which services you want us to perform on your " + make);
+      
+      for(int b = 0; b < services.length; b++)
+      {
+         System.out.println("Would you like us to perform a/an " + services[b] + "? (Yes/No)");
+         answer2 = input2.next();
+         if(answer2.equalsIgnoreCase("Yes"))
+         {
+            sum += prices[b];
+         } 
+      }
+      return sum;
+   }
+   
+   public static double calcFinalPrice1(double sumImport)
+   {
+      double[] tax = {0.30,0.11,0.03,0.09};
+      double sum2;
+   
+      for(int d = 0; d < tax.length; d++)
+      {
+         sumImport = sumImport + (sumImport * tax[d]); 
+      }
+      
+      sum2 = sumImport;
+      
+      return sum2;
+   }
+   
+   public static double calcFinalPrice2(double sumNoImport)
+   {
+      double[] tax = {0.30,0.03,0.09};
+      double sum3;
+   
+      for(int e = 0; e < tax.length; e++)
+      {
+         sumNoImport = sumNoImport + (sumNoImport * tax[e]); 
+      }
+      
+      sum3 = sumNoImport;
+      
+      return sum3;
+   }
+
+}
